@@ -50,13 +50,13 @@ def test4():
   time.sleep(3)
   redform = request.form.get('Red')
   blueform = request.form.get('blue')
+  redlevel = redform
+  bluelevel = blueform
   print(str(redform))
   #select1 = request.form.get('Blue')
   socketio.emit('msg', {'q': 'q', 'Red': str(redform), 'total': int(request.form['total'])}, broadcast=True)
   return '<html>working</html>'
 
-redlevel = redform
-bluelevel = blueform
 
 @app.route('/screen')
 def s3_screen():
@@ -65,13 +65,18 @@ def s3_screen():
 
 @app.route('/team/<color>')
 def s3_team_screen(color):
-  level = redlevel if color == red else bluelevel
+  print(color)
+  if color == 'Red':
+    level = redlevel 
+  else:
+    level = bluelevel
   if level == "HS": 
     dictionary = MS2[random.choice(list(MS2.keys()))]
   elif level == "MS": 
     dictionary = HS2[random.choice(list(HS2.keys()))]
   
-  else dictionary = {"":""}:
+  else:
+     dictionary = {"":""}
   return render_template('team.html', color=color, row=dictionary)
 
 
