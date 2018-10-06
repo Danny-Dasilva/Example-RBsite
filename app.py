@@ -44,6 +44,9 @@ def s3_admin():
 def s3_reset():
   socketio.emit('msg', {'msg': 'reset'}, broadcast=True)
 
+redlevel = " "
+bluelevel = " "
+
 @app.route('/admin/start', methods=['Post'])
 def test4():
   #hs = render_template('HS.html', row= HS)
