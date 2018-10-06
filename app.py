@@ -49,8 +49,10 @@ bluelevel = " "
 
 @app.route('/admin/start', methods=['Post'])
 def test4():
+  global redlevel 
+  global bluelevel
   #hs = render_template('HS.html', row= HS)
-  time.sleep(3)
+  time.sleep(1)
   redform = request.form.get('Red')
   blueform = request.form.get('blue')
   redlevel = redform
@@ -68,15 +70,16 @@ def s3_screen():
 
 @app.route('/team/<color>')
 def s3_team_screen(color):
+  print(redlevel)
   if color == 'red':
     level = redlevel 
   else:
     level = bluelevel
   print(level)
   if level == "HS": 
-    dictionary = MS2[random.choice(list(MS2.keys()))]
-  elif level == "MS": 
     dictionary = HS2[random.choice(list(HS2.keys()))]
+  elif level == "MS": 
+    dictionary = MS2[random.choice(list(MS2.keys()))]
   else:
      dictionary = {"":""}
   return render_template('team.html', color=color, row=dictionary)
