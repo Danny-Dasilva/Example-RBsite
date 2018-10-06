@@ -8,6 +8,7 @@ import codecs
 import time
 import random
 # data preprocessing
+#HS CSV
 data = urllib.request.urlopen('https://raw.githubusercontent.com/DannylDasilva/F/master/HS.csv')
 reader = csv.reader(codecs.iterdecode(data, 'utf-8', errors='replace'))
 build = list(reader)
@@ -18,6 +19,16 @@ for row in build:
   dict = {columns[1]: row[1], columns[2]: row[2], columns[3]: row[3]}
   HS2[row[0]] = dict
 
+#MS CSV
+with open('MS.csv', 'r') as infile:
+  reader = csv.reader(infile)
+  build = list(reader)
+columns = build[0]
+build = build[1:]
+MS2 = {}
+for row in build:
+  dict = {columns[1]: row[1], columns[2]: row[2], columns[3]: row[3]}
+  MS2[row[0]] = dict
 
 
 
@@ -44,6 +55,8 @@ def test4():
   socketio.emit('msg', {'q': 'q', 'Red': str(redform), 'total': int(request.form['total'])}, broadcast=True)
   return '<html>working</html>'
 
+redlevel = redform
+bluelevel = blueform
 
 @app.route('/screen')
 def s3_screen():
@@ -52,8 +65,11 @@ def s3_screen():
 
 @app.route('/team/<color>')
 def s3_team_screen(color):
-  AHHH = HS2[random.choice(list(HS2.keys()))]
-  return render_template('team.html', color=color, row=AHHH)
+  level = redlevel if color == red else bluelevel
+  if level == "HS": dictionary = MS2[random.choice(list(MS2.keys()))]
+  elif level == "MS": dictionary = HS2[random.choice(list(HS2.keys()))]
+  else dictionary = {{  }}
+  return render_template('team.html', color=color, row=dictionary)
 
 
 if __name__=='__main__':
