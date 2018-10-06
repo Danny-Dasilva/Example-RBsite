@@ -69,14 +69,15 @@ def s3_screen():
 @app.route('/team/<color>')
 def s3_team_screen(color):
   if color == 'Red':
-    level = redlevel 
+    print('working') 
+  '''
   else:
     level = bluelevel
   print(bluelevel)
   if level == "HS": 
     dictionary = MS2[random.choice(list(MS2.keys()))]
   elif level == "MS": 
-    dictionary = HS2[random.choice(list(HS2.keys()))]
+    dictionary = HS2[random.choice(list(HS2.keys()))] '''
   else:
      dictionary = {"":""}
   return render_template('team.html', color=color, row=dictionary)
