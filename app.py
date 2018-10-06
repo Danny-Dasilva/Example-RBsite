@@ -53,7 +53,7 @@ def s3_screen():
 @app.route('/team/<color>')
 def s3_team_screen(color):
   AHHH = HS2[random.choice(list(HS2.keys()))]
-  return render_template('team.html', color=color)
+  return render_template('team.html', color=color, row=AHHH)
 
 
 if __name__=='__main__':
