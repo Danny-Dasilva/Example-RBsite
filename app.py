@@ -3,7 +3,7 @@ from flask import Flask, render_template, flash, redirect, render_template, \
 from flask_socketio import SocketIO
 from flask_socketio import send, emit 
 import csv
-importP urllib.request
+import urllib.request
 import codecs
 import time
 import random
@@ -68,7 +68,7 @@ def s3_team_screen(color):
   level = redlevel if color == red else bluelevel
   if level == "HS": dictionary = MS2[random.choice(list(MS2.keys()))]
   elif level == "MS": dictionary = HS2[random.choice(list(HS2.keys()))]
-  else dictionary = {{  }}
+  else dictionary = {"":""}
   return render_template('team.html', color=color, row=dictionary)
 
 
