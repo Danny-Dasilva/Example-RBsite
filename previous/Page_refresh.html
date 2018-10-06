@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+
+
+  <!-- Bootstrap core CSS -->
+  <script src="jquery-3.3.1.min.js"></script>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
+  <!--  -->
+{% for row in build %}
+    {{ row }}
+{% endfor %}
+
+ 
+{% block container %}
+
+<div class="top-pad">
+    
+      <div class="#">
+        <h2>
+          <p>{{ row['Term'] }}</p>
+          <small> {{ row['Definition'] }}</small>
+        </h2>
+      </div>
+  
+  </div>
+  {% endblock %}
+  </body>
+<head>
+
+  <script src="http://code.jquery.com/jquery-la..."></script>
+
+  <script>
+
+    $(document).ready(function() {
+      
+      $('#btn_click').on('click', function() {
+
+      $('#wrapper').load(document.URL +  ' #wrapper');
+      
+      });
+      
+      });
+      
+      </script>
+
+</head>
+
+<body>
+
+  <br />
+
+  <div id="wrapper">
+
+      <h2>
+          <p>{{ row['Term'] }}</p>
+          <small> {{ row['Definition'] }}</small>
+        </h2>
+
+      
+
+    </div>
+
+  </div>
+
+  <br />
+
+  <div id="div2" style="border:solid 2px green; width: 100px;">
+
+    <button type="button" id="btn_click" /> click me! </button>
+
+  </div>
+
+</body>
+
+</html>
+</html>
