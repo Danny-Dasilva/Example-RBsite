@@ -73,6 +73,7 @@ def s3_team_screen(color):
     level = redlevel 
   else:
     level = bluelevel
+  print(bluelevel)
   if level == "HS": 
     dictionary = MS2[random.choice(list(MS2.keys()))]
   elif level == "MS": 
